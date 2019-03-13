@@ -103,7 +103,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -202,7 +202,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -210,6 +210,28 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # -------------------------------------------------------------------------
+    rect.attach_to(win)
+    # define x and y coordinates of the rectangle
+    if rect.corner_1.x < rect.corner_2.x:
+        left_x = rect.corner_1.x
+        right_x = rect.corner_2.x
+    else:
+        left_x = rect.corner_2.x
+        right_x = rect.corner_1.x
+
+    if rect.corner_1.y < rect.corner_2.y:
+        top_y = rect.corner_1.y
+        bottom_y = rect.corner_2.y
+    else:
+        top_y = rect.corner_2.y
+        bottom_y = rect.corner_1.y
+
+    for k in range (n-1):
+        upper_left_c=rg.Point(left_x-delta*(k+1),top_y-delta*(k+1))
+        lower_right_c=rg.Point(right_x+delta*(k+1),bottom_y+delta*(k+1))
+        rectk=rg.Rectangle(upper_left_c,lower_right_c)
+        rectk.attach_to(win)
+        win.render()
 
 
 # -----------------------------------------------------------------------------
